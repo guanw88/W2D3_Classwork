@@ -49,6 +49,27 @@ RSpec.describe Array do
         expect(arr.two_sum).to eq([[0,5],[2,3],[2,4]])
       end   
     end
+  end
+  
+  describe "#my_transpose" do
+    subject(:matrix) { [[0, 1, 2],
+                        [3, 4, 5],
+                        [6, 7, 8]]}
+
+    it "returns transposed matrix" do
+      transposed = matrix.transpose
+      expect(matrix.my_transpose).to eq(transposed)
+    end
+    
+    context "when input matrix is not a square matrix" do
+      subject(:matrix) {[[0, 1],
+                         [2, 3],
+                         [4, 5]]}
+      it "raises an error" do
+        expect{ matrix.my_transpose }.to raise_error(ArgumentError)
+      end
+    end
   end 
+   
   
 end 

@@ -16,6 +16,23 @@ class Array
       end 
     end 
     indices
-  end 
+  end
+  
+  def my_transpose
+    raise ArgumentError unless self.length == self[0].length
+    
+    transposed = []
+    
+    self.each_with_index do |row, i|
+      subarray = []
+      row.each_with_index do |el, j|
+        subarray << self[j][i]
+      end
+      transposed << subarray
+    end
+    
+    transposed
+  end
+      
   
 end 
