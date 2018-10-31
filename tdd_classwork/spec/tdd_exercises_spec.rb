@@ -70,6 +70,30 @@ RSpec.describe Array do
       end
     end
   end 
+  
+  describe "#stock_picker" do 
+    subject(:prices) {[5, 10, 15, 7, 1]}
+    
+    it "returns pair of most profitable days" do 
+      expect(prices.stock_picker).to eq([0,2])
+    end 
+    
+    context "when multiple days are equally profitable" do 
+      subject(:prices) {[5, 10, 15, 15, 7, 1]}
+      
+      it "returns multiple pairs" do 
+        expect(prices.stock_picker).to eq([[0,2],[0,3]])
+      end 
+    end 
+    
+    context "when no days are profitable" do 
+      subject(:prices) {[15, 15, 7, 1]}
+      it "returns an empty array" do 
+        expect(prices.stock_picker).to be_empty
+      end 
+    end 
+    
+  end 
    
   
 end 

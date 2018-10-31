@@ -34,5 +34,25 @@ class Array
     transposed
   end
       
+  def stock_picker
+    profit = nil
+    indices = []
+    
+    self.each_with_index do |buyprice, idx1|
+      self.each_with_index do |sellprice, idx2|
+        if idx2 > idx1
+          profit = sellprice - buyprice if profit.nil?
+          if (sellprice - buyprice) > profit
+            profit = sellprice - buyprice
+            indices = [[idx1, idx2]]
+          elsif (sellprice - buyprice) == profit
+            indices << [idx1, idx2]
+          end
+        end 
+      end
+    end
+    indices.flatten! if indices.length == 1
+    profit > 0 ? indices : []
+  end
   
 end 
