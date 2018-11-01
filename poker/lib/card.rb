@@ -7,7 +7,6 @@ class Card
   def initialize(suit, value)
     @suit = suit
     @value = value
-    @position = "deck" #needs position arg
     @shown = false
   end
 end 

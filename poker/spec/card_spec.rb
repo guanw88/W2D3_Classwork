@@ -14,10 +14,6 @@ RSpec.describe Card do
       expect(card.value).to eq("4")
     end 
     
-    it "should have a position" do 
-      expect(card.position).to be_an_instance_of(Deck)
-    end 
-    
     it "should be hidden or revealed" do 
       expect(card.shown).to be false
     end 

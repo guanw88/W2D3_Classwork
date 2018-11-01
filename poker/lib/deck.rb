@@ -7,9 +7,8 @@ class Deck
   # 
   # display_hash =
   # 0..51 
-  # ["A","s"],
-  # 
-  # {"A": [S,D,C,H]}
+  # ["s","A"],
+
   attr_reader :cards
   
   def initialize
@@ -17,6 +16,15 @@ class Deck
     populate_deck
   end
   
+  def values
+    values = []
+    @cards.values.each do |card_obj|
+      values << [card_obj.suit, card_obj.value]
+    end 
+    values
+  end 
+  
+  private
   def populate_deck 
     @cards = Hash.new {|h,k| h[k] = Array.new}
     
@@ -27,12 +35,5 @@ class Deck
     @cards
   end 
   
-  def values
-    values = []
-    @cards.values.each do |card_obj|
-      values << [card_obj.suit, card_obj.value]
-    end 
-    values
-  end 
-
+  
 end
